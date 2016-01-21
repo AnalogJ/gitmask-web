@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>gitMask - Develop Anonymously</title>
+  
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <!-- Main CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+
+
+      .window {
+        text-align: left;
+        align-items: left;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      textarea, input, button {
+        outline: none;
+      }
+
+      .window-button, .window .buttons .close, .window .buttons .minimize, .window .buttons .maximize {
+        padding: 0;
+        margin: 0;
+        margin-right: 4px;
+        width: 12px;
+        height: 12px;
+        background-color: gainsboro;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .window {
+        animation: bounceIn 1s ease-in-out;
+        width: 640px;
+      }
+      .window .handle {
+        height: 22px;
+        background: linear-gradient(0deg, #d8d8d8, #ececec);
+        border-top: 1px solid white;
+        border-bottom: 1px solid #b3b3b3;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        color: rgba(0, 0, 0, 0.7);
+        font-family: Helvetica, sans-serif;
+        font-size: 13px;
+        line-height: 22px;
+        text-align: center;
+      }
+      .window .buttons {
+        position: absolute;
+        float: left;
+        margin: 0 8px;
+      }
+      .window .buttons .close {
+        background-color: #ff6159;
+      }
+      .window .buttons .minimize {
+        background-color: #ffbf2f;
+      }
+      .window .buttons .maximize {
+        background-color: #25cc3e;
+      }
+      .window .terminal {
+        padding: 4px;
+        background-color: black;
+        opacity: 0.95;
+        height: 218px;
+        color: white;
+        font-family: 'Source Code Pro', monospace;
+        font-weight: 200;
+        font-size: 14px;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        overflow-y: auto;
+      }
+      .window .terminal::after {
+        content: "|";
+        animation: blink 2s steps(1) infinite;
+      }
+
+      .prompt {
+        color: #bde371;
+      }
+
+      .path {
+        color: #5ed7ff;
+      }
+
+      @keyframes blink {
+        50% {
+          color: transparent;
+        }
+      }
+      @keyframes bounceIn {
+        0% {
+          transform: translateY(-1000px);
+        }
+        60% {
+          transform: translateY(200px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body class="wrap push">
+
+  <!-- PRELOADER -->
+  <div class="gm-preloader"></div>
+  <!-- /PRELOADER -->
+
+  <!-- PUSH MENU -->
+  <nav id="menu" class="panel">
+    <img src="img/logo.png" alt="">
+  </nav>
+  <!-- /PUSH MENU -->
+
+  <!-- MENU FIXED BUTTON -->
+  <div class="menu-fixed-button">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 gm-menu-fixed-button"><!--
+          --><span class="icon ion-android-menu"></span><!--
+        --></div>
+      </div>
+    </div>
+  </div>
+  <!-- /MENU FIXED BUTTON -->
+
+  <!-- HEADER -->
+  <header id="header">
+
+    <!-- HEADER OVERLAY --> 
+    <div class="gm-overlay gm-overlay-color"></div>
+    <!-- /HEADER OVERLAY -->
+    
+    <div class="container">
+
+        <!-- LOGO & MENU -->
+          <div class="row">
+            <!-- LOGO -->
+            <div class="col-xs-4 gm-logo">
+              <a href="index.html#" title="">
+                <img src="img/logo.png" alt="">
+              </a>
+            </div>
+            <!-- /LOGO -->
+            <!-- MENU -->
+            <div class="col-xs-8 gm-menu">
+              <span class="icon ion-android-menu"></span>
+              <ul>
+                <li><a href="index.html#terminal">Usage</a></li><!--
+                --><li><a href="index.html#features">Features</a></li><!--
+                --><li><a href="index.html#why">Why</a></li><!--
+                --><li><a href="index.html#about">About</a></li><!--
+              --></ul>
+            </div>
+            <!-- /MENU -->
+          </div>
+        <!-- /LOGO & MENU -->
+        
+        <!-- TEXTS -->
+          <div class="row">
+            <div class="col-md-5 col-sm-7 gm-texts">
+              <h2>Code <span>Privacy</span>.</h2>
+              <p>Just because you support OSS, doesn't mean you want your name forever associated with every project you ever touch</p>
+            </div>
+          </div>
+        <!-- /TEXTS -->
+
+        <!-- BUTTONS -->
+          <div class="row">
+            <div class="col-sm-6 gm-buttons">
+              <a href="index.html#terminal">Try it</a><a href="http://www.github.com/AnalogJ/gitmask">Github</a>
+            </div>
+          </div>
+        <!-- /BUTTONS -->
+
+        <!-- Terminal -->
+          <div class="">
+
+          </div>
+
+      <div id="terminal" class="gm-terminal">
+        <div class="col-sm-12">
+
+          <div class="window">
+            <div class="handle">
+              <div class="buttons">
+                <button class="close">
+                </button>
+                <button class="minimize">
+                </button>
+                <button class="maximize">
+                </button>
+              </div>
+              <span class="title"></span>
+            </div>
+            <div class="terminal">Last login: Tue Jan 19 2016 23:34:14 on ttys000
+<span class="prompt">➜</span> <span class="path">~</span> git remote add gitmask http://www.github.com/analogj/gitmask.git
+zsh: command not found: fdsfsdf
+<span class="prompt">➜</span> <span class="path">~</span> dsfdfsdf
+zsh: command not found: dsfdfsdf
+<span class="prompt">➜</span> <span class="path">~</span> fdsfsdf
+zsh: command not found: fdsfsdf
+<span class="prompt">➜</span> <span class="path">~</span> dsfdfsdf
+zsh: command not found: dsfdfsdf
+
+<span class="prompt">➜</span> <span class="path">~</span> </div>
+          </div>
+
+
+        </div>
+      </div>
+        <!-- /Terminal -->
+
+    </div>
+  </header>
+  <!-- /HEADER -->
+
+
+  <!-- ICON & FEATURES -->
+  <div id="features" class="icon-features">
+    <div class="container">
+      <div class="row">       
+        <div class="col-md-8 col-md-offset-2 gm-icon-features-title">
+          <h3>Github Anonymously? How's it work?</h3>
+        </div>
+      </div>
+      <!-- COLUMNS -->
+      <div class="row">
+        <div class="col-md-4 gm-icon-features-box">
+          <span class="icon ion-ios-cloud-upload-outline"></span>
+          <h4>Add Gitmask Remote</h4>
+          <p>All you have to do is add a gitmask remote to your working repository. If you've cloned from <a href="https://github.com/bitcoin/bitcoin">bitcoin/bitcoin</a> all you need to do is:</p>
+          <code>git remote add gitmask https://git.gitmask.com/<b>bitcoin/bitcoin</b>.git</code>
+        </div>
+        <div class="col-md-4 gm-icon-features-box">
+          <span class="icon ion-ios-eye-outline"></span>
+          <h4>Anonymize your code</h4>
+          <p>Once you push your code to Gitmask we strip out and replace embedded identification info from your commits: author names, email and timestamps.</p>
+        </div>
+        <div class="col-md-4 gm-icon-features-box">
+          <span class="icon ion-ios-locked-outline"></span>
+          <h4>Github Pull Request</h4>
+          <p>A pull request is automatically made to the upstream Github repository with your changes, but now the originating IP is Gitmask, and the author is our anonymous Gitmask user account.</p>
+        </div>
+      </div>
+      <!-- /COLUMNS -->
+      <!-- COLUMNS -->
+      <div id="why" class="row">
+        <div class="col-md-4 gm-icon-features-item">
+          <h3>Ok. But Why?</h3>
+          <p>Gitmask lets you hide the true origin of code, which can be useful for a variety of reasons.</p>
+        </div>
+        <div class="col-md-4 gm-icon-features-item-icons">
+          <h4><i class="icon ion-earth"></i> Privacy</h4>
+          <p>Github's tagline is social coding. Unfortunately that means that every commit you every make is visible to everyone. Every commit.</p>
+          <h4><i class="icon ion-search"></i> Controversial projects</h4>
+          <p>Just because you think <a href="https://github.com/letsgetrandy/DICSS">DICSS</a> is amusing, doesn't mean you want your boss to know about it. How about your girlfriend? </p>
+        </div>
+        <div class="col-md-4 gm-icon-features-item-icons">
+          <h4><i class="icon ion-gear-a"></i> Simple</h4>
+          <p>Adding a new git remote is much easier than setting up another Github account and remembering to use that secondary SSH key. </p>
+          <h4><i class="icon ion-help"></i> Mystery</h4>
+          <p><a href="https://github.com/bitcoin/bitcoin">Bitcoin</a> is fairly mainstream now, but it's inventor is still a mystery. Sometimes its better to let the code speak for itself.</p>
+        </div>
+      </div>
+      <!-- /COLUMNS -->
+    </div>
+  </div>
+  <!-- /ICON & FEATURES -->
+
+
+  <!-- PARALLAX + TEXTS -->
+  <div id="about" style="background: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5) )" class="parallax-texts">
+    <div class="container">
+      <!-- COLUMNS -->
+      <div class="row">       
+        <div class="col-md-8 col-md-offset-2 gm-parallax-texts">
+          <h3>Trust me, I'm a developer</h3>
+          <p>My name is Jason, I'm an avid open source developer. I love Github, and I love open source, but on more than one occasion I've wished that I could hide a commit from my public timeline.
+          </p>
+          <p>
+            I finally decided to sit down and figure out what it would take to make that happen, and Gitmask is the result. Obviously its open source, with an MIT license.
+          </p>
+          <a href="http://www.github.com/AnalogJ/gitmask" class="gm-parallax-texts-btnl">View on Github</a>
+        </div>
+      </div>
+      <!-- /COLUMNS -->
+    </div>
+  </div>
+  <!-- /PARALLAX + TEXTS -->
+
+
+
+
+  <!-- jQuery -->
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <!-- jQuery Easing -->
+  <script src="js/jquery.easing.1.3.js"></script>
+  <!-- Backstretch -->
+  <script src="js/jquery.backstretch.min.js"></script>
+  <!-- Smooth Scroll -->
+  <script src="js/SmoothScroll.js"></script>
+  <!-- Parallax.js -->
+  <script src="js/parallax.min.js"></script>
+  <!-- slick -->
+  <script src="js/slick.min.js"></script>
+  <!-- video scripts -->
+  <script src="js/jquery.fitvids.js"></script>
+  <script src="js/jquery.prettyembed.min.js"></script>
+  <!-- Tweetie -->
+  <script src="twitter/tweetie.js"></script>
+  <!-- bigSlide.js -->
+  <script src="js/bigSlide.min.js"></script>
+  <!-- gitmask js scripts -->
+  <script src="js/gitmask.js"></script>
+  </body>
+</html>
