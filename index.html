@@ -246,14 +246,15 @@
               </div>
               <span class="title"></span>
             </div>
-            <div class="terminal">Last login: Tue Jan 19 2016 23:34:14 on ttys000
+            <div class="terminal">Last login: Sat Aug 5 2017 23:34:14 on ttys000
 <span class="prompt">➜</span> <span class="path">~</span> git clone git@github.com:<b>AnalogJ/gitmask</b>.git
 <span class="prompt">➜</span> <span class="path">~</span> git checkout -b feat_branch
 <span class="prompt">➜</span> <span class="path">~</span> touch test.txt
-<span class="prompt">➜</span> <span class="path">~</span> git commit -am "Anonymous pull request message"
-<span class="prompt">➜</span> <span class="path">~</span> git remote add gitmask https://git.gitmask.com/<b>AnalogJ/gitmask</b>.git
-<span class="prompt">➜</span> <span class="path">~</span> git push gitmask feat_branch:master
-remote: #### Gitmask is running...
+<span class="prompt">➜</span> <span class="path">~</span> git commit -am "Commits will be squashed, and messages will be overwritten"
+<span class="prompt">➜</span> <span class="path">~</span> git bundle create commits.bundle origin/master..<b>feat_branch</b>
+<span class="prompt">➜</span> <span class="path">~</span> curl -L -X PUT --upload-file <b>commits.bundle</b> https://git.gitmask.com/v1/bundle/github.com/<b>AnalogJ/gitmask</b>/master
+# Gitmask will process your git bundle in the background.
+# You should see a new PR opened on the destination repo within 30 seconds
 ...
 <span class="prompt">➜</span> <span class="path">~</span> </div>
           </div>
@@ -280,9 +281,9 @@ remote: #### Gitmask is running...
       <div class="row">
         <div class="col-md-4 gm-icon-features-box">
           <span class="icon ion-ios-cloud-upload-outline"></span>
-          <h4>Add Gitmask Remote</h4>
-          <p>All you have to do is add a gitmask remote to your working repository. If you've cloned from <a href="https://github.com/bitcoin/bitcoin">bitcoin/bitcoin</a> all you need to do is:</p>
-          <code>git remote add gitmask https://git.gitmask.com/<b>bitcoin/bitcoin</b>.git</code>
+          <h4>Upload Bundle to Gitmask</h4>
+          <p>All you have to do is create a git bundle and upload it to Gitmask. If you've cloned from <a href="https://github.com/bitcoin/bitcoin">bitcoin/bitcoin</a> all you need to do is:</p>
+          <code>curl -L -X PUT --upload-file commits.bundle https://git.gitmask.com/v1/bundle/github.com/<b>bitcoin/bitcoin</b>/master</code>
         </div>
         <div class="col-md-4 gm-icon-features-box">
           <span class="icon ion-ios-eye-outline"></span>
