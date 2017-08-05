@@ -249,7 +249,7 @@
             <div class="terminal">Last login: Sat Aug 5 2017 23:34:14 on ttys000
 <span class="prompt">➜</span> <span class="path">~</span> git clone https://github.com/<b>AnalogJ/gitmask</b>.git
 <span class="prompt">➜</span> <span class="path">~</span> git checkout -b feat_branch
-<span class="prompt">➜</span> <span class="path">~</span> touch test.txt
+<span class="prompt">➜</span> <span class="path">~</span> echo "update readme" >> README.md
 <span class="prompt">➜</span> <span class="path">~</span> git commit -am "Commits will be squashed and messages overwritten"
 <span class="prompt">➜</span> <span class="path">~</span> git bundle create commits.bundle origin/master..<b>feat_branch</b>
 <span class="prompt">➜</span> <span class="path">~</span> curl -L -X PUT --upload-file <b>commits.bundle</b> https://git.gitmask.com/v1/bundle/github.com/<b>AnalogJ/gitmask</b>/master
