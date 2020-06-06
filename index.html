@@ -251,11 +251,11 @@
 <span class="prompt">➜</span> <span class="path">~</span> git checkout -b feat_branch
 <span class="prompt">➜</span> <span class="path">~</span> echo "update readme" >> README.md
 <span class="prompt">➜</span> <span class="path">~</span> git commit -am "Commits will be squashed and messages overwritten"
-<span class="prompt">➜</span> <span class="path">~</span> git bundle create commits.bundle origin/master..<b>feat_branch</b>
-<span class="prompt">➜</span> <span class="path">~</span> curl -L -X PUT --upload-file <b>commits.bundle</b> https://git.gitmask.com/v1/bundle/github.com/<b>AnalogJ/gitmask</b>/master
+<span class="prompt">➜</span> <span class="path">~</span> git remote add gitmask https://git.gitmask/v1/gh/<b>AnalogJ/gitmask</b>
+<span class="prompt">➜</span> <span class="path">~</span> git push gitmask <b>feat_branch:master</b>
 
-# Gitmask will process your git bundle in the background.
-# You should see a new PR opened on the destination repo within 30 seconds
+# Gitmask will strip identifying information from your commits.
+# You will be provided with a direct link to the pull request.
 <span class="prompt">➜</span> <span class="path">~</span> </div>
           </div>
 
@@ -281,9 +281,9 @@
       <div class="row">
         <div class="col-md-4 gm-icon-features-box">
           <span class="icon ion-ios-cloud-upload-outline"></span>
-          <h4>Upload Bundle to Gitmask</h4>
-          <p>All you have to do is create a git bundle and upload it to Gitmask. If you've bundled your changes to <a href="https://github.com/bitcoin/bitcoin">bitcoin/bitcoin</a> all you need to do is:</p>
-          <code>curl -L -X PUT --upload-file commits.bundle https://git.gitmask.com/v1/bundle/github.com/<b>bitcoin/bitcoin</b>/master</code>
+          <h4>Add the Gitmask remote</h4>
+          <p>All you have to do is add the Gitmask remote to your repo. If you're contributing commits to <a href="https://github.com/bitcoin/bitcoin">bitcoin/bitcoin</a> all you need to do is:</p>
+          <code>git remote add gitmask https://git.gitmask.com/v1/gh/<b>bitcoin/bitcoin</b> && git push gitmask <b>feat_branch:master</b></code>
         </div>
         <div class="col-md-4 gm-icon-features-box">
           <span class="icon ion-ios-eye-outline"></span>
@@ -307,7 +307,12 @@
           <h4><i class="icon ion-earth"></i> Privacy</h4>
           <p>Github's tagline is social coding. Unfortunately that means that every commit you ever make is visible to everyone. Every commit.</p>
           <h4><i class="icon ion-search"></i> Controversial projects</h4>
-          <p>Just because you think <a href="https://github.com/letsgetrandy/DICSS">DICSS</a> is amusing, doesn't mean you want your boss to know about it. How about your SO? </p>
+          <p><a href="https://en.wikipedia.org/wiki/Censorship_of_GitHub">Government tracking</a>,
+            <a href="https://github.com/Cxbx-Reloaded/Cxbx-Reloaded">corporate restrictions</a>,
+            <a href="https://github.com/bitcoin/bitcoin">implied financial interest</a>,
+            <a href="https://github.com/offapi/rbac-23andme-oauth2">wanting to prove a point</a>
+            -- there's any number of reasons why you may want to contribute privately.
+          </p>
         </div>
         <div class="col-md-4 gm-icon-features-item-icons">
           <h4><i class="icon ion-gear-a"></i> Simple</h4>
